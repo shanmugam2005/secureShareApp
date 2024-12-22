@@ -12,7 +12,11 @@ import { Document, Page, pdfjs } from 'react-pdf';
   import.meta.url,
 ).toString();*/
 //pdfjs.GlobalWorkerOptions.workerSrc = '/path/to/pdf.worker.min.js';
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+if (process.env.NODE_ENV === 'production') {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+} else {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+}
 
 
 //pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/pdfjs-dist@4.9.155/pdf.worker.min.js`;
